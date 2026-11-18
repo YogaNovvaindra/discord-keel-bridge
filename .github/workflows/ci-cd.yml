@@ -35,7 +35,7 @@ jobs:
         ruff check .
 
     - name: Verify imports
-      run: python -c "from config import Config; from models import Finding; from service.investigator import InvestigatorLLM; from tools import InvestigatorTools; from service import PamawasInvestigator; print('All imports successful')"
+      run: python -c "from discord_keel_bridge import app; from unittest.mock import MagicMock; print('All imports successful')"
 
   build:
     name: Build & Test Build
@@ -58,7 +58,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Verify imports
-      run: python -c "import main; print('Imports successful')"
+      run: python -c "import discord_keel_bridge; print('Imports successful')"
 
   docker:
     name: Build & Push Docker Image

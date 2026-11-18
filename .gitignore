@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging / build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test & lint caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Security scan output
+bandit-results.json
+trivy-results.sarif
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editors & OS
+.idea/
+.vscode/
+.DS_Store
