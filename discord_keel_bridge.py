@@ -20,8 +20,18 @@ def _port() -> int:
 @app.route("/v1/incoming", methods=["POST"])
 def incoming():
     original = request.json
-    discord = {}
-    discord["content"] = f'**{original["name"]}:** {original["message"]}. ({original["createdAt"]}).'
+    # Build a Discord embed from the incoming Keel payload.
+    # Keel payloads vary – use whatever fields are present.
+    title = original.get("name") or "Keel notification"
+    description = original.get("message") or ""
+    timestamp = original.get("createdAt") or original.get("timestamp")
+    embed = {
+        "title": title,
+        "description": description,
+        "timestamp": timestamp,
+        "color": 3447003,  # Discord "blurple" color
+    }
+    discord = {"embeds": [embed]}
     result = requests.post(
         _discord_url(),
         data=json.dumps(discord),
