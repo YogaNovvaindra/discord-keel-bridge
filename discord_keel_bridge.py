@@ -26,8 +26,9 @@ def incoming():
         print("Payload delivered successfully, code {}.".format(result.status_code))
         resp = jsonify(success=True)
         resp.status_code = 200
-    return resp 
+    return resp
 
-http_server = WSGIServer(('0.0.0.0', PORT), app)
-print(f"Bridge listening on port: {PORT}")
-http_server.serve_forever()
+if __name__ == '__main__':
+    http_server = WSGIServer(('0.0.0.0', PORT), app)
+    print(f"Bridge listening on port: {PORT}")
+    http_server.serve_forever()
