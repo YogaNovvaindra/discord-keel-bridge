@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "04:00"
+    target-branch: "dev"
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
+    allow:
+      - dependency-type: "direct"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+      - dependency-type: "indirect"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+    commit-message:
+      prefix: "chore(deps)"
+    rebase-strategy: "disabled"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    target-branch: "dev"
+    allow:
+      - dependency-type: "direct"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+      - dependency-type: "indirect"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+    commit-message:
+      prefix: "chore(deps)"

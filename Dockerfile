@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.15-alpine
 ENV DISCORD_BRIDGE_URL="https://discord.com/api/webhooks/123456789"
 ENV DISCORD_BRIDGE_PORT=5000
 
